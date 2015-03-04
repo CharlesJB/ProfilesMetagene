@@ -1,0 +1,11 @@
+Package: ProfilesMetagene
+Title: Demo of creation of genomic profiles with metagene
+Version: 0.1
+Authors@R: person("Charles", "Joly Beauparlant",
+  "Charles.Joly-Beauparlant@crchul.ulaval.ca", role = c("aut", "cre"))
+Description: This package shows how to generate the genomic profiles to use as
+  input for similaRpeak. 
+Depends: R (>= 3.1.0)
+License: Artistic 2.0
+LazyData: true
+VignetteBuilder: knitr
