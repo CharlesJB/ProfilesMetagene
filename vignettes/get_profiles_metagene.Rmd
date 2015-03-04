@@ -1,0 +1,52 @@
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{Demo: how to extract genomic profiles wiht metagene}
+-->
+
+Demo: how to extract genomic profiles wiht metagene
+========================================================
+
+### 0. Introduction
+
+In this demo, we will see how it is possible to use metagene to extract the
+genomic profiles from bam files.
+
+### 1. Preparing the files
+
+We will work with the following bam files:
+
+```{r getBamFilenames}
+bam_files <- c("inst/extdata/H3K4me1.bam", "inst/extdata/H3K27ac.bam")
+#bam_files <- c(system.file("extdata/H3K4me1.bam", package = "ProfilesMetagene"),
+#               system.file("extdata/H3K27ac.bam", package = "ProfilesMetagene"))
+```
+
+We will use the following regions:
+
+```{r getRegions, cache = TRUE}
+regions <- "inst/extdata/tidy_enhancers.txt"
+regions <- read.table(regions, header = TRUE)
+regions <- makeGRangesFromDataFrame(regions, start.field = "chromStart",
+               end.field = "chromEnd")
+width(regions) <- 1000
+```
+
+We also need to make sure the `seqlevels` of the regions match the `seqlevels`
+of the bam files:
+
+```{r matchSeqlevels}
+seqlevels(regions, force = TRUE) <- seqlevels(Rsamtools::BamFile(bam_files[1]))
+```
+
+### 2. Launching the metagene analysis
+
+```{r metagene, cache = TRUE}
+suppressMessages(library(metagene))
+mg <- metagene$new(regions = regions, bam_files = bam_files, cores = 12)
+```
+
+### 3. Extracting the profiles
+
+```{r extractProfiles}
+profiles <- mg$coverages
+```
