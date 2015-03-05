@@ -2,3 +2,9 @@
 .Rhistory
 .RData
 packrat/lib*/
+*html
+*swp
+*cache*
+vignettes/*.R
+*md
+vignettes/.*
