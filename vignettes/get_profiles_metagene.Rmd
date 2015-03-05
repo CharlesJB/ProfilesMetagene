@@ -41,7 +41,7 @@ seqlevels(regions, force = TRUE) <- seqlevels(Rsamtools::BamFile(bam_files[1]))
 
 ```{r metagene, cache = TRUE}
 suppressMessages(library(metagene))
-mg <- metagene$new(regions = regions, bam_files = bam_files, cores = 12)
+mg <- metagene$new(regions = regions, bam_files = bam_files, cores = 2)
 ```
 
 ### 3. Extracting the profiles
