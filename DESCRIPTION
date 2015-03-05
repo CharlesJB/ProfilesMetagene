@@ -13,4 +13,3 @@ License: Artistic 2.0
 LazyData: TRUE
 VignetteBuilder: knitr
 Suggests: knitr
-Depends: GenomicRanges

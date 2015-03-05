@@ -8,3 +8,4 @@ packrat/lib*/
 vignettes/*.R
 *md
 vignettes/.*
+packrat/src/*
