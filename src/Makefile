@@ -1,6 +1,6 @@
 URL_ENCODE=https://www.encodeproject.org/
 
-DIR_EXTDATA=/is1/projects/AD_similaRpeak/ProfilesMetagene/inst/extdata
+DIR_EXTDATA=../inst/extdata
 TARGETS_DOWNLOAD+=$(DIR_EXTDATA)/H3K4me1.bam
 TARGETS_DOWNLOAD+=$(DIR_EXTDATA)/H3K27ac.bam
 
