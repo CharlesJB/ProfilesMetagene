@@ -16,15 +16,14 @@ genomic profiles from bam files.
 We will work with the following bam files:
 
 ```{r getBamFilenames}
-bam_files <- c("inst/extdata/H3K4me1.bam", "inst/extdata/H3K27ac.bam")
-#bam_files <- c(system.file("extdata/H3K4me1.bam", package = "ProfilesMetagene"),
-#               system.file("extdata/H3K27ac.bam", package = "ProfilesMetagene"))
+bam_files <- c(system.file("extdata/H3K4me1.bam", package = "ProfilesMetagene"),
+               system.file("extdata/H3K27ac.bam", package = "ProfilesMetagene"))
 ```
 
 We will use the following regions:
 
 ```{r getRegions, cache = TRUE}
-regions <- "inst/extdata/tidy_enhancers.txt"
+regions <- system.file("extdata/tidy_enhancers.txt", package = "ProfilesMetagene")
 regions <- read.table(regions, header = TRUE)
 regions <- makeGRangesFromDataFrame(regions, start.field = "chromStart",
                end.field = "chromEnd")
