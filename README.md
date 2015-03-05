@@ -7,7 +7,5 @@ From R:
 ```
 library(packrat)
 packrat::on()
-packrat::extlib("devtools")
-packrat::extlib("knitr")
-build()
+knitr::knit2html("vignettes/get_profiles_metagene.Rmd")
 ```
