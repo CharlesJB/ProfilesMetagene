@@ -1,0 +1,7 @@
+library(packrat)
+packrat::init()
+packrat::install_github("charlesjb/metagene")
+install.packages("devtools")
+install.packages("knitr")
+install.packages("rmarkdown")
+savehistory("packrat_init.R")
