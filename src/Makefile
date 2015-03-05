@@ -4,18 +4,26 @@ DIR_EXTDATA=../inst/extdata
 TARGETS_DOWNLOAD+=$(DIR_EXTDATA)/H3K4me1.bam
 TARGETS_DOWNLOAD+=$(DIR_EXTDATA)/H3K27ac.bam
 
+DIR_SRC=../src
+SAMTOOLS=$(DIR_SRC)/samtools-1.2/samtools
+
 TARGETS_INDEX=$(addsuffix .bai, $(TARGETS_DOWNLOAD))
 
 .PHONY: all
 
-all: download index
+all: download samtools index
 
 download: $(TARGETS_DOWNLOAD)
 
+samtools: $(TARGET_SAMTOOLS)
+
 index: $(TARGETS_INDEX)
 
-%.bam.bai: %.bam
-	samtools index $<
+%.bam.bai: %.bam $(SAMTOOLS)
+	$(SAMTOOLS) index $<
+
+$(SAMTOOLS):
+	make -C $(dir $@) all
 
 $(DIR_EXTDATA)/H3K4me1.bam:
 	wget -O $@ $(URL_ENCODE)/files/ENCFF000ARY/@@download/ENCFF000ARY.bam

@@ -9,3 +9,8 @@ vignettes/*.R
 *md
 vignettes/.*
 packrat/src/*
+*.o
+*.a
+*.h
+*test*
+*misc*
